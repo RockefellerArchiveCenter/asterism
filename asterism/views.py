@@ -7,7 +7,6 @@ def prepare_response(data):
     Transforms a string, Exception or tuple to consistently structured output.
     """
     data = data.args if isinstance(data, Exception) else data
-    print(data)
     if isinstance(data, str):
         detail = data
         objects = []
