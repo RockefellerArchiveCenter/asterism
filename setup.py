@@ -10,5 +10,5 @@ setup(name='asterism',
       license='MIT',
       packages=['asterism'],
       test_suite='nose.collector',
-      tests_require=['nose', 'django', 'djangorestframework'],
+      tests_require=['nose', 'django', 'djangorestframework', 'psycopg2'],
       zip_safe=False)
