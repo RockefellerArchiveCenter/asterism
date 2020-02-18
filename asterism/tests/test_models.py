@@ -38,6 +38,7 @@ class TestModels(TestCase):
         self.assertTrue(isinstance(package, Package))
         package.clean_fields()
 
+        # Make sure choices are enforced
         for field in ["origin", "process_status", "type"]:
             invalid_package = package
             setattr(invalid_package, field, "wrong")
