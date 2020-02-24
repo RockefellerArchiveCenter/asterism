@@ -1,7 +1,11 @@
+from rest_framework.views import APIView
+from rest_framework.response import Response
 
 
 def prepare_response(data):
-    """Transforms a string, Exception or tuple to consistently structured output"""
+    """
+    Transforms a string, Exception or tuple to consistently structured output.
+    """
     data = data.args if isinstance(data, Exception) else data
     if isinstance(data, str):
         detail = data
@@ -13,3 +17,16 @@ def prepare_response(data):
         objects = [objects]
     count = len(objects) if objects else 0
     return {"detail": detail, "objects": objects, "count": count}
+
+
+class BaseServiceView(APIView):
+    """Base view which accepts a POST request and returns either 200 OK or
+    500 Internal Server Error. Requires child classes to implement a
+    `get_service_response()` method."""
+
+    def post(self, request, format=None):
+        try:
+            response = self.get_service_response(request)
+            return Response(prepare_response(response), status=200)
+        except Exception as e:
+            return Response(prepare_response(e), status=500)
