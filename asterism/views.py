@@ -30,3 +30,11 @@ class BaseServiceView(APIView):
             return Response(prepare_response(response), status=200)
         except Exception as e:
             return Response(prepare_response(e), status=500)
+
+
+class RoutineView(BaseServiceView):
+    """Base view for routines which expose a `run` method which executes the
+    main logic."""
+
+    def get_service_response(self, request):
+        return self.routine().run()

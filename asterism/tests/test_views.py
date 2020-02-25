@@ -12,14 +12,32 @@ OBJECTS = ['123', '456']
 MESSAGE = "this is a wake-up call"
 
 
+class Routine:
+    def run(self):
+        return (MESSAGE, OBJECTS)
+
+
+class BadRoutine:
+    def run(self):
+        raise Exception(MESSAGE, OBJECTS)
+
+
 class ServiceView(views.BaseServiceView):
     def get_service_response(self, request):
         return (MESSAGE, OBJECTS)
 
 
-class BadView(views.BaseServiceView):
+class BadServiceView(views.BaseServiceView):
     def get_service_response(self, request):
         raise Exception(MESSAGE, OBJECTS)
+
+
+class RoutineView(views.RoutineView):
+    routine = Routine
+
+
+class BadRoutineView(views.RoutineView):
+    routine = BadRoutine
 
 
 class TestViews(TestCase):
@@ -42,8 +60,8 @@ class TestViewClasses(TestCase):
     def setUp(self):
         self.factory = APIRequestFactory()
 
-    def test_base_service_view(self):
-        for view, expected_code in [(ServiceView, 200), (BadView, 500)]:
+    def test_views(self):
+        for view, expected_code in [(ServiceView, 200), (BadServiceView, 500), (RoutineView, 200), (BadRoutineView, 500)]:
             request = self.factory.post(
                 '/', '{}', content_type='application/json')
             response = view.as_view()(request)
