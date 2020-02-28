@@ -382,7 +382,7 @@ INSTANCE_TYPE_CHOICES = (
     ('text', 'Text')
 )
 
-)LEVEL_CHOICES = (
+LEVEL_CHOICES = (
     ('class', 'Class'),
     ('collection', 'Collection'),
     ('file', 'File'),
