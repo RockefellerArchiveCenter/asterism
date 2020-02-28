@@ -325,6 +325,7 @@ DATE_LABEL_CHOICES = (
     ('record_keeping', 'Record Keeping'),
     ('usage', 'Usage'),
     ('other', 'Other')
+)
 
 EXTENT_TYPE_CHOICES = (
     ('box(es)', 'Boxes'),
