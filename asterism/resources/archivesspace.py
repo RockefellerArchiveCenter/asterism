@@ -160,7 +160,6 @@ class ArchivesSpaceComponentBase(odin.Resource):
     dates = odin.ArrayOf(ArchivesSpaceDate)
     rights_statements = odin.ArrayOf(ArchivesSpaceRightsStatement)
     linked_agents = odin.ArrayOf(ArchivesSpaceLinkedAgent)
-    instances = odin.ArrayOf(ArchivesSpaceInstance)
     notes = odin.ArrayOf(ArchivesSpaceNote)
     uri = odin.StringField()
 
@@ -177,6 +176,7 @@ class ArchivesSpaceArchivalObject(ArchivesSpaceComponentBase):
     resource = odin.DictAs(ArchivesSpaceRef)
     parent = odin.DictAs(ArchivesSpaceRef, null=True)
     has_unpublished_ancestor = odin.BooleanField()
+    instances = odin.ArrayOf(ArchivesSpaceInstance)
 
 
 class ArchivesSpaceResource(ArchivesSpaceComponentBase):
