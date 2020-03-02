@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(name='asterism',
-      version='0.3.3',
+      version='0.3.4',
       description='Helpers for Project Electron infrastructure',
       url='http://github.com/RockefellerArchiveCenter/asterism',
       author='Rockefeller Archive Center',

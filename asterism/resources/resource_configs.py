@@ -328,6 +328,7 @@ DATE_LABEL_CHOICES = (
 )
 
 EXTENT_TYPE_CHOICES = (
+    ('Bound Volumes', 'Bound Volumes'),
     ('box(es)', 'Boxes'),
     ('bytes', 'Bytes'),
     ('cassettes', 'Cassettes'),
