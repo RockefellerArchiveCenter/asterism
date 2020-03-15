@@ -26,3 +26,6 @@ class BasePackage(models.Model):
     data = JSONField(null=True, blank=True)
     created = models.DateTimeField(auto_now_add=True)
     last_modified = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        abstract = True
