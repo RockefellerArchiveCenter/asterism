@@ -22,7 +22,7 @@ class BasePackage(models.Model):
     )
     origin = models.CharField(max_length=20, choices=ORIGIN_CHOICES, default='aurora')
     PROCESS_STATUS_CHOICES = (None)
-    process_status = models.IntegerField(max_length=50, choices=PROCESS_STATUS_CHOICES)
+    process_status = models.IntegerField(choices=PROCESS_STATUS_CHOICES)
     data = JSONField(null=True, blank=True)
     created = models.DateTimeField(auto_now_add=True)
     last_modified = models.DateTimeField(auto_now=True)
