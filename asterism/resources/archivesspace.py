@@ -6,6 +6,7 @@ from . import resource_configs
 """Lays out the ArchivesSpace resources and their fields.
 Defaults and choices chosen from resource_configs.py are included here."""
 
+
 class ArchivesSpaceAncestor(odin.Resource):
     """Indicates the fields included in an AS ancestor resource."""
     ref = odin.StringField()
@@ -31,7 +32,8 @@ class ArchivesSpaceExtent(odin.Resource):
     number = odin.StringField()
     container_summary = odin.StringField(null=True)
     portion = odin.StringField(choices=(('whole', 'Whole'), ('part', 'Part'))),
-    extent_type = odin.StringField(choices=resource_configs.EXTENT_TYPE_CHOICES)
+    extent_type = odin.StringField(
+        choices=resource_configs.EXTENT_TYPE_CHOICES)
 
 
 class ArchivesSpaceExternalId(odin.Resource):
@@ -49,7 +51,8 @@ class ArchivesSpaceSubcontainer(odin.Resource):
 
 class ArchivesSpaceInstance(odin.Resource):
     """Indicates the fields included in an AS instance resource."""
-    instance_type = odin.StringField(choices=resource_configs.INSTANCE_TYPE_CHOICES)
+    instance_type = odin.StringField(
+        choices=resource_configs.INSTANCE_TYPE_CHOICES)
     is_representative = odin.BooleanField()
     sub_container = odin.DictAs(ArchivesSpaceSubcontainer)
 
@@ -57,7 +60,9 @@ class ArchivesSpaceInstance(odin.Resource):
 class ArchivesSpaceLinkedAgent(odin.Resource):
     """Indicates the fields included in an AS linked agent resource."""
     role = odin.StringField(choices=resource_configs.AGENT_ROLE_CHOICES)
-    relator = odin.StringField(choices=resource_configs.AGENT_RELATOR_CHOICES, null=True)
+    relator = odin.StringField(
+        choices=resource_configs.AGENT_RELATOR_CHOICES,
+        null=True)
     ref = odin.StringField()
 
 
@@ -67,8 +72,12 @@ class ArchivesSpaceNameBase(odin.Resource):
     authorized = odin.BooleanField()
     is_display_name = odin.BooleanField()
     use_dates = odin.ArrayOf(ArchivesSpaceDate)
-    rules = odin.StringField(choices=resource_configs.NAME_RULES_CHOICES, null=True)
-    source = odin.StringField(choices=resource_configs.NAME_SOURCE_CHOICES, null=True)
+    rules = odin.StringField(
+        choices=resource_configs.NAME_RULES_CHOICES,
+        null=True)
+    source = odin.StringField(
+        choices=resource_configs.NAME_SOURCE_CHOICES,
+        null=True)
 
 
 class ArchivesSpaceNameCorporateEntity(ArchivesSpaceNameBase):
@@ -84,7 +93,8 @@ class ArchivesSpaceNameFamily(ArchivesSpaceNameBase):
 class ArchivesSpaceNamePerson(ArchivesSpaceNameBase):
     primary_name = odin.StringField()
     rest_of_name = odin.StringField(null=True)
-    name_order = odin.StringField(choices=(('direct', 'Direct'), ('inverted', 'Inverted')))
+    name_order = odin.StringField(
+        choices=(('direct', 'Direct'), ('inverted', 'Inverted')))
 
 
 class ArchivesSpaceSubnote(odin.Resource):

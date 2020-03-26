@@ -1,12 +1,13 @@
 from unittest import TestCase
 
+from asterism import views
+from rest_framework.test import APIRequestFactory
+
 from .helpers import configure_django
 
 # this has to be called before we try to import anything from DRF
 configure_django()
 
-from asterism import views
-from rest_framework.test import APIRequestFactory
 
 OBJECTS = ['123', '456']
 MESSAGE = "this is a wake-up call"
@@ -61,7 +62,8 @@ class TestViewClasses(TestCase):
         self.factory = APIRequestFactory()
 
     def test_views(self):
-        for view, expected_code in [(ServiceView, 200), (BadServiceView, 500), (RoutineView, 200), (BadRoutineView, 500)]:
+        for view, expected_code in [
+                (ServiceView, 200), (BadServiceView, 500), (RoutineView, 200), (BadRoutineView, 500)]:
             request = self.factory.post(
                 '/', '{}', content_type='application/json')
             response = view.as_view()(request)
