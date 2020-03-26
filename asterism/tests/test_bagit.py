@@ -44,5 +44,11 @@ class TestBagitHelpers(TestCase):
         bag = bagit.Bag(self.bag_path)
         self.assertTrue(bag.validate())
 
+    def test_get_bag_info_fields(self):
+        fields = bagit_helpers.get_bag_info_fields(self.bag_path)
+        self.assertTrue(isinstance(fields, dict), "Incorrect bag-info data: {}".format(fields))
+        for key in ["Bag_Software_Agent", "Bagging_Date", "Payload_Oxum"]:
+            self.assertTrue(key in fields.keys())
+
     def tearDown(self):
         rmtree(self.bag_path)
