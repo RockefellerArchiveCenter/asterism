@@ -17,6 +17,13 @@ You can then use `asterism` in your python scripts by importing it:
 
     import asterism
 
+### What's here
+
+`bagit_helpers` - contains generic bagit functions to validate and update bags.
+`models` - a `BasePackage` abstract base model that represents a bag of archival records.
+`resources` - Odin representations of ArchivesSpace resources.
+`views` - a `BaseServiceView` and a `RoutineView` which provide abstract wrapping methods for handling JSON requests and responses.
+
 
 ## License
 
