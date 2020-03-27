@@ -14,13 +14,20 @@ class BasePackage(models.Model):
         ('aip', 'Archival Information Package'),
         ('dip', 'Dissemination Information Package'),
     )
-    type = models.CharField(max_length=50, choices=TYPE_CHOICES, null=True, blank=True)
+    type = models.CharField(
+        max_length=50,
+        choices=TYPE_CHOICES,
+        null=True,
+        blank=True)
     ORIGIN_CHOICES = (
         ('aurora', 'Aurora'),
         ('legacy_digital', 'Legacy Digital Processing'),
         ('digitization', 'Digitization')
     )
-    origin = models.CharField(max_length=20, choices=ORIGIN_CHOICES, default='aurora')
+    origin = models.CharField(
+        max_length=20,
+        choices=ORIGIN_CHOICES,
+        default='aurora')
     PROCESS_STATUS_CHOICES = (None)
     process_status = models.IntegerField(choices=PROCESS_STATUS_CHOICES)
     data = JSONField(null=True, blank=True)

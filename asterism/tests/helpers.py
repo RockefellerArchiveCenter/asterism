@@ -1,6 +1,7 @@
-import django
 import random
 import string
+
+import django
 
 
 def random_string(size=6, chars=string.ascii_uppercase + string.digits):

@@ -1,6 +1,7 @@
 import random
-from django.core.exceptions import ValidationError
 from unittest import TestCase
+
+from django.core.exceptions import ValidationError
 
 from .helpers import configure_django, random_string
 
