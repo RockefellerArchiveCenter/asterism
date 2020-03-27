@@ -4,16 +4,16 @@ import tarfile
 import zipfile
 import pwd
 
-from os import remove, stat, walk
-from os.path import basename, isdir, isfile, join, getmtime, getsize, splitext
-from shutil import rmtree, move, copytree
+from os import makedirs, pardir, remove, stat, walk
+from os.path import abspath, basename, isdir, isfile, join, getmtime, getsize, splitext
+from shutil import rmtree, move, copy, copytree
 
 
-def file_owner(file_path):
+def get_owner(file_path):
     return pwd.getpwuid(stat(file_path).st_uid).pw_name
 
 
-def file_modified_time(file_path):
+def get_modified_time(file_path):
     return datetime.datetime.fromtimestamp(getmtime(file_path))
 
 
@@ -34,23 +34,39 @@ def get_dir_size(start_path):
 
 
 def remove_file_or_dir(file_path):
+    removed = False
     if isfile(file_path):
         try:
             remove(file_path)
+            removed = True
         except Exception as e:
             print(e)
-            return False
     elif isdir(file_path):
         try:
             rmtree(file_path)
+            removed = True
         except Exception as e:
             print(e)
-            return False
-    return True
+    return removed
+
+
+def copy_file_or_dir(src, dest):
+    copied = False
+    if isdir(src):
+        copytree(src, dest)
+        copied = True
+    elif isfile(src):
+        if not isdir(abspath(join(dest, pardir))):
+            makedirs(abspath(join(dest, pardir)))
+        copy(src, dest)
+        copied = True
+    return copied
 
 
 def move_file_or_dir(src, dest):
     try:
+        if not isdir(abspath(join(dest, pardir))):
+            makedirs(abspath(join(dest, pardir)))
         move(src, dest)
         return True
     except Exception as e:
@@ -59,23 +75,31 @@ def move_file_or_dir(src, dest):
 
 
 def is_dir_or_file(file_path):
+    result = False
     if isdir(file_path):
-        return True
+        result = True
     if isfile(file_path):
-        return True
-    return False
+        result = True
+    return result
 
 
-def make_tarfile(output_filename, source_dir, compressed=True):
+def make_tarfile(src, dest, compressed=True, remove_src=False):
     """Creates a TAR file.
 
     Args:
-        output_filename (str): file path for TAR file to be created.
-        source_dir (str): directory to serialize
+        src (str): directory to serialize.
+        dest(str): file path for TAR file to be created.
+        compressed (bool): whether the TAR file should be compressed.
+        remove_src (bool): whether the src should be deleted after serialization.
     """
     file_mode = "w:gz" if compressed else "w"
-    with tarfile.open(output_filename, file_mode) as tar:
-        tar.add(source_dir, arcname=basename(source_dir))
+    if not isdir(abspath(join(dest, pardir))):
+        makedirs(abspath(join(dest, pardir)))
+    with tarfile.open(dest, file_mode) as tar:
+        tar.add(src, arcname=basename(src))
+    if remove_src:
+        rmtree(src)
+    return dest
 
 
 def anon_extract_all(file_path, tmp_dir):
@@ -87,14 +111,15 @@ def anon_extract_all(file_path, tmp_dir):
         file_path (str): file path for a serialized file.
         tmp_dir (str): file path of the location in which to extract the file.
     """
+    extracted = False
     if isdir(file_path):
-        return dir_extract_all(file_path, tmp_dir)
+        extracted = dir_extract_all(file_path, tmp_dir)
     else:
         if file_path.endswith("tar.gz") or file_path.endswith(".tar"):
-            return tar_extract_all(file_path, tmp_dir)
+            extracted = tar_extract_all(file_path, tmp_dir)
         if file_path.endswith(".zip"):
-            return zip_extract_all(file_path, tmp_dir)
-    return False
+            extracted = zip_extract_all(file_path, tmp_dir)
+    return extracted
 
 
 def zip_extract_all(file_path, tmp_dir):
@@ -104,7 +129,7 @@ def zip_extract_all(file_path, tmp_dir):
         zf = zipfile.ZipFile(file_path, "r")
         zf.extractall(tmp_dir)
         zf.close()
-        extracted = True
+        extracted = tmp_dir
     except Exception as e:
         print("Error extracting ZIP file: {}".format(e))
     return extracted
@@ -117,7 +142,7 @@ def tar_extract_all(file_path, tmp_dir):
         tf = tarfile.open(file_path, "r:*")
         tf.extractall(tmp_dir)
         tf.close()
-        extracted = True
+        extracted = tmp_dir
     except Exception as e:
         print("Error extracting TAR file: {}".format(e))
     return extracted
@@ -127,11 +152,12 @@ def dir_extract_all(file_path, tmp_dir):
     """Extracts the contents of a directory."""
     extracted = False
     try:
-        # notice forward slash missing
-        if is_dir_or_file("{}{}".format(tmp_dir, file_path.split("/")[-1])):
-            rmtree("{}{}".format(tmp_dir, file_path.split("/")[-1]))
-        copytree(file_path, "{}{}".format(tmp_dir, file_path.split("/")[-1]))
-        extracted = True
+        target = join(tmp_dir, basename(file_path))
+        if is_dir_or_file(target):
+            rmtree(target)
+        copytree(file_path, target)
+        extracted = target
     except Exception as e:
+        return e
         print("Error extracting a directory: {}".format(e))
     return extracted
