@@ -3,8 +3,8 @@ from random import sample
 from shutil import copytree, rmtree
 from unittest import TestCase
 
-from asterism import bagit_helpers
 import bagit
+from asterism import bagit_helpers
 
 
 class TestBagitHelpers(TestCase):
