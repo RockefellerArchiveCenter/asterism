@@ -1,4 +1,6 @@
 import bagit
+import re
+from os.path import join
 
 
 def validate(bag_path):
@@ -20,3 +22,28 @@ def update_manifests(bag_path):
     """Updates bag manifests according to BagIt specification"""
     bag = bagit.Bag(bag_path)
     bag.save(manifests=True)
+
+
+def get_bag_info_fields(bag_path):
+    """Returns """
+    fields = {}
+    patterns = ["(?P<key>[\w\-]+)", "(?P<val>.+)"]
+    try:
+        with open(join(bag_path, "bag-info.txt"), "r") as f:
+            for line in f.readlines():
+                line = line.strip("\n")
+
+                row_search = re.search(":?(\s)?".join(patterns), line)
+                if row_search:
+                    key = row_search.group("key").replace("-", "_").strip()
+                    val = row_search.group("val").strip()
+                    if key in fields:
+                        listval = [fields[key]]
+                        listval.append(val)
+                        fields[key] = listval
+                    else:
+                        fields[key] = val
+    except FileNotFoundError:
+        print("Could not find a bag-info.txt file at {}".format(
+            join(bag_path, "bag-info.txt")))
+    return fields
