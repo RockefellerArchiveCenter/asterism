@@ -1,8 +1,13 @@
 from setuptools import setup
 
+with open("README.md", "r") as fh:
+    long_description = fh.read()
+
 setup(name='asterism',
       version='0.5',
       description='Helpers for Project Electron infrastructure',
+      long_description=long_description,
+      long_description_content_type="text/markdown",
       url='http://github.com/RockefellerArchiveCenter/asterism',
       author='Rockefeller Archive Center',
       author_email='archive@rockarch.org',
