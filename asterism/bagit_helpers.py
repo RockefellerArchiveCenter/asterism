@@ -27,13 +27,13 @@ def update_manifests(bag_path):
 def get_bag_info_fields(bag_path):
     """Returns """
     fields = {}
-    patterns = ["(?P<key>[\w\-]+)", "(?P<val>.+)"]
+    patterns = ["(?P<key>[\\w\\-]+)", "(?P<val>.+)"]
     try:
         with open(join(bag_path, "bag-info.txt"), "r") as f:
             for line in f.readlines():
                 line = line.strip("\n")
 
-                row_search = re.search(":?(\s)?".join(patterns), line)
+                row_search = re.search(":?(\\s)?".join(patterns), line)
                 if row_search:
                     key = row_search.group("key").replace("-", "_").strip()
                     val = row_search.group("val").strip()
