@@ -1,10 +1,10 @@
-from setuptools import setup
+from setuptools import find_packages, setup
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setup(name='asterism',
-      version='0.6',
+      version='0.6.1',
       description='Helpers for Project Electron infrastructure',
       long_description=long_description,
       long_description_content_type="text/markdown",
@@ -18,7 +18,7 @@ setup(name='asterism',
           'psycopg2-binary',
           'odin'],
       license='MIT',
-      packages=['asterism', 'asterism.resources'],
+      packages=find_packages(),
       test_suite='nose.collector',
       tests_require=[
           'nose',
