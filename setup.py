@@ -21,9 +21,10 @@ setup(name='asterism',
       packages=find_packages(),
       test_suite='nose.collector',
       tests_require=[
-          'nose',
           'bagit',
           'django',
           'djangorestframework',
-          'psycopg2-binary'],
+          'psycopg2-binary',
+          'nose',
+          'odin'],
       zip_safe=False)
