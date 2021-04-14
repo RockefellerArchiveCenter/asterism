@@ -1,5 +1,5 @@
-bagit==1.7.0
-django==2.2.10
-djangorestframework==3.11.0
-odin==1.5.1
-psycopg2-binary==2.8.4
+bagit==1.8.1
+django==3.2
+djangorestframework==3.12.4
+odin==1.5.2
+psycopg2-binary==2.8.6
