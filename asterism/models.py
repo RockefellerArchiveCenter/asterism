@@ -1,4 +1,3 @@
-from django.contrib.postgres.fields import JSONField
 from django.db import models
 
 
@@ -30,7 +29,7 @@ class BasePackage(models.Model):
         default='aurora')
     PROCESS_STATUS_CHOICES = (None)
     process_status = models.IntegerField(choices=PROCESS_STATUS_CHOICES)
-    data = JSONField(null=True, blank=True)
+    data = models.JSONField(null=True, blank=True)
     created = models.DateTimeField(auto_now_add=True)
     last_modified = models.DateTimeField(auto_now=True)
 
