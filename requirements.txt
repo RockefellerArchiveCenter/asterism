@@ -1,5 +1,5 @@
 bagit==1.8.1
 django==3.2.4
 djangorestframework==3.12.4
-odin==1.6.2
+odin==1.7.0
 psycopg2-binary==2.8.6
