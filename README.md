@@ -2,18 +2,18 @@
 
 Helpers and common patterns used in Project Electron infrastructure. This package is named after a pattern or group of stars that is visually obvious, but not officially recognized as a constellation. Read more about asterisms on [Wikipedia](https://en.wikipedia.org/wiki/Asterism_(astronomy)).
 
-[![Build Status](https://travis-ci.org/RockefellerArchiveCenter/asterism.svg?branch=master)](https://travis-ci.org/RockefellerArchiveCenter/asterism)
+[![Build Status](https://travis-ci.org/RockefellerArchiveCenter/asterism.svg?branch=base)](https://travis-ci.org/RockefellerArchiveCenter/asterism)
 
 ## Setup
 
 Make sure this library is installed:
 
-    $ pip install git+git://github.com/RockefellerArchiveCenter/asterism.git
+    $ pip install asterism
 
 
 ## Usage
 
-You can then use `asterism` in your python scripts by importing it:
+You can then use `asterism` in your Python scripts and applications by importing it:
 
     import asterism
 
@@ -24,6 +24,10 @@ You can then use `asterism` in your python scripts by importing it:
 `models` - a `BasePackage` abstract base model that represents a bag of archival records.
 `resources` - Odin representations of ArchivesSpace resources.
 `views` - a `BaseServiceView` and a `RoutineView` which provide abstract wrapping methods for handling JSON requests and responses.
+
+
+## Development
+This repository contains a configuration file for git [pre-commit](https://pre-commit.com/) hooks which help ensure that code is linted before it is checked into version control. It is strongly recommended that you install these hooks locally by installing pre-commit and running `pre-commit install`.
 
 
 ## License
