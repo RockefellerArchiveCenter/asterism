@@ -1,7 +1,6 @@
 import datetime
 import os
-from random import sample
-from shutil import copyfile, copytree, rmtree
+from shutil import copytree, rmtree
 from unittest import TestCase
 
 from asterism import file_helpers
@@ -11,8 +10,10 @@ class TestFileHelpers(TestCase):
     def setUp(self):
         self.fixtures_dir = os.path.join(
             os.getcwd(), 'asterism', 'fixtures')
-        self.file_path = os.path.join(self.fixtures_dir, 'file_helpers', 'file.txt')
-        self.dir_path = os.path.join(self.fixtures_dir, 'file_helpers', 'directory')
+        self.file_path = os.path.join(
+            self.fixtures_dir, 'file_helpers', 'file.txt')
+        self.dir_path = os.path.join(
+            self.fixtures_dir, 'file_helpers', 'directory')
         self.tmp_dir = os.path.join(self.fixtures_dir, 'tmp')
 
     def test_file_attributes(self):
@@ -43,19 +44,22 @@ class TestFileHelpers(TestCase):
         self.assertTrue(os.path.isfile(target_path))
         self.assertTrue(os.path.isfile(self.file_path))
 
-        for path in [os.path.basename(self.file_path), os.path.basename(self.dir_path)]:
+        for path in [os.path.basename(
+                self.file_path), os.path.basename(self.dir_path)]:
             moved = file_helpers.move_file_or_dir(
                 os.path.join(self.tmp_dir, path), os.path.join(self.tmp_dir, "moved", path))
             self.assertTrue(moved)
 
         for path in os.listdir(os.path.join(self.tmp_dir, "moved")):
-            removed = file_helpers.remove_file_or_dir(os.path.join(self.tmp_dir, "moved", path))
+            removed = file_helpers.remove_file_or_dir(
+                os.path.join(self.tmp_dir, "moved", path))
             self.assertTrue(removed)
 
     def test_make_tarfile(self):
         src_path = os.path.join(self.fixtures_dir, "file_helpers", "archive")
         for remove_src in [False, True]:
-            for fp, compressed in [("archive.tar", False), ("archive.tar.gz", True)]:
+            for fp, compressed in [
+                    ("archive.tar", False), ("archive.tar.gz", True)]:
                 if not os.path.isdir(src_path):
                     copytree(self.dir_path, src_path)
                 tarfile = file_helpers.make_tarfile(
