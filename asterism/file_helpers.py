@@ -1,12 +1,10 @@
 import datetime
-import re
+import pwd
 import tarfile
 import zipfile
-import pwd
-
 from os import makedirs, pardir, remove, stat, walk
-from os.path import abspath, basename, isdir, isfile, join, getmtime, getsize, splitext
-from shutil import rmtree, move, copy, copytree
+from os.path import abspath, basename, getmtime, getsize, isdir, isfile, join
+from shutil import copy, copytree, move, rmtree
 
 
 def get_owner(file_path):

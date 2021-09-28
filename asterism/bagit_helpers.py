@@ -1,6 +1,7 @@
-import bagit
 import re
 from os.path import join
+
+import bagit
 
 
 def validate(bag_path):
