@@ -81,20 +81,24 @@ def is_dir_or_file(file_path):
     return result
 
 
-def make_tarfile(src, dest, compressed=True, remove_src=False):
+def make_tarfile(src, dest, compressed=True, compresslevel=1, remove_src=False):
     """Creates a TAR file.
 
     Args:
         src (str): directory to serialize.
         dest(str): file path for TAR file to be created.
         compressed (bool): whether the TAR file should be compressed.
+        compresslevel (int): from 0 to 9 controlling the level of compression
         remove_src (bool): whether the src should be deleted after serialization.
     """
-    file_mode = "w:gz" if compressed else "w"
     if not isdir(abspath(join(dest, pardir))):
         makedirs(abspath(join(dest, pardir)))
-    with tarfile.open(dest, file_mode) as tar:
-        tar.add(src, arcname=basename(src))
+    if compressed:
+        with tarfile.open(dest, "w:gz", compresslevel=compresslevel) as tar:
+            tar.add(src, arcname=basename(src))
+    else:
+        with tarfile.open(dest, "w") as tar:
+            tar.add(src, arcname=basename(src))
     if remove_src:
         rmtree(src)
     return dest
