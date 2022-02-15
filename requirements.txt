@@ -1,5 +1,5 @@
 bagit==1.8.*
-django==3.2.*
+django==4.0.*
 djangorestframework==3.12.*
 odin==1.7.*
 psycopg2-binary==2.9.*
