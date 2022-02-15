@@ -76,6 +76,6 @@ class TestViewClasses(TestCase):
 
     def test_ping_view(self):
         request = self.factory.get('/', None, content_type='application/json')
-        response = views.PingView.as_view(request)
+        response = views.PingView.as_view()(request)
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.data, {'pong': True})
