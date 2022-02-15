@@ -63,10 +63,19 @@ class TestViewClasses(TestCase):
 
     def test_views(self):
         for view, expected_code in [
-                (ServiceView, 200), (BadServiceView, 500), (RoutineView, 200), (BadRoutineView, 500)]:
+                (ServiceView, 200),
+                (BadServiceView, 500),
+                (RoutineView, 200),
+                (BadRoutineView, 500)]:
             request = self.factory.post(
                 '/', '{}', content_type='application/json')
             response = view.as_view()(request)
             self.assertEqual(response.status_code, expected_code)
             self.assertEqual(response.data.get("objects"), OBJECTS)
             self.assertEqual(response.data.get("detail"), MESSAGE)
+
+    def test_ping_view(self):
+        request = self.factory.get('/', None, content_type='application/json')
+        response = views.PingView.as_view()(request)
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.data, {'pong': True})
