@@ -38,3 +38,10 @@ class RoutineView(BaseServiceView):
 
     def get_service_response(self, request):
         return self.routine().run()
+
+
+class PingView(APIView):
+    """Returns a response if the application is running."""
+
+    def get(self, request):
+        return Response({"pong": True}, status=200)
