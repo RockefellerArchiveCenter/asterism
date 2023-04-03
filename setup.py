@@ -4,7 +4,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setup(name='asterism',
-      version='0.9.0',
+      version='0.1.0',
       description='Helpers for Project Electron infrastructure',
       long_description=long_description,
       long_description_content_type="text/markdown",
@@ -14,17 +14,10 @@ setup(name='asterism',
       install_requires=[
           'bagit',
           'django',
-          'djangorestframework',
-          'psycopg2-binary',
-          'odin'],
+          'djangorestframework'],
       license='MIT',
       packages=find_packages(),
-      test_suite='nose.collector',
       tests_require=[
-          'bagit',
-          'django',
-          'djangorestframework',
-          'psycopg2-binary',
-          'nose',
-          'odin'],
+          'coverage',
+          'pytest'],
       zip_safe=False)
