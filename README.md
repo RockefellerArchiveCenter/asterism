@@ -22,7 +22,6 @@ You can then use `asterism` in your Python scripts and applications by importing
 `bagit_helpers` - contains generic bagit functions to validate and update bags.
 `file_helpers` - generic functions for manipulating files and directories, as well as working with ZIP and TAR files.
 `models` - a `BasePackage` abstract base model that represents a bag of archival records.
-`resources` - Odin representations of ArchivesSpace resources.
 `views` - a `BaseServiceView` and a `RoutineView` which provide abstract wrapping methods for handling JSON requests and responses.
 
 
