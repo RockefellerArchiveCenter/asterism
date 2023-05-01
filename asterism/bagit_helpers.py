@@ -12,7 +12,7 @@ def validate(bag_path):
 
 def update_bag_info(bag_path, data):
     """Adds metadata from a dictionary to `bag-info.txt`"""
-    assert(isinstance(data, dict))
+    assert isinstance(data, dict)
     bag = bagit.Bag(bag_path)
     for k, v in data.items():
         bag.info[k] = v
