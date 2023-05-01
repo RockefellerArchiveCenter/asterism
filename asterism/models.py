@@ -21,7 +21,8 @@ class BasePackage(models.Model):
     ORIGIN_CHOICES = (
         ('aurora', 'Aurora'),
         ('legacy_digital', 'Legacy Digital Processing'),
-        ('digitization', 'Digitization')
+        ('digitization', 'Digitization'),
+        ('av_digitization', 'Audiovisual Digitization')
     )
     origin = models.CharField(
         max_length=20,
