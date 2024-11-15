@@ -25,13 +25,5 @@ jobs:
       - name: Install tox
         run: pip install tox
 
-      - name: Run tox 3.9
-        if: ${{ matrix.python-version }} == "3.9"
-        env:
-          TOXENV: py39
-
-      - name: Run tox 3.10
-        if: ${{ matrix.python-version }} == "3.9"
-        env:
-          TOXENV: py310
+      - name: Run tox
         run: tox
