@@ -11,7 +11,6 @@ jobs:
     strategy:
       matrix:
         python-version: ["3.9", "3.10"]
-        toxenv: [py39, py310]
 
     steps:
       - name: Checkout code
@@ -27,6 +26,10 @@ jobs:
         run: pip install tox
 
       - name: Run tox
-        run: tox
+        if: ${{ matrix.python-version }} == "3.9"
         env:
-          TOXENV: ${{ matrix.toxenv }}
+          TOXENV: py39
+        if: ${{ matrix.python-version }} == "3.9"
+        env:
+          TOXENV: py310
+        run: tox
