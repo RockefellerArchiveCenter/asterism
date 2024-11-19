@@ -2,8 +2,6 @@
 
 Helpers and common patterns used in Project Electron infrastructure. This package is named after a pattern or group of stars that is visually obvious, but not officially recognized as a constellation. Read more about asterisms on [Wikipedia](https://en.wikipedia.org/wiki/Asterism_(astronomy)).
 
-[![Build Status](https://app.travis-ci.com/RockefellerArchiveCenter/asterism.svg?branch=base)](https://app.travis-ci.com/RockefellerArchiveCenter/asterism)
-
 ## Setup
 
 Make sure this library is installed:
