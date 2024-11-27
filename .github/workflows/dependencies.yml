@@ -1,8 +1,5 @@
 name: update dependencies
 on:
-  pull_request:
-    branches:
-      - development
 
   schedule:
     - cron:  '0 0 1 * *'
@@ -26,7 +23,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           token: ${{ steps.app-token.outputs.token }}
-          ref: dependency-tweaks
+          ref: development
           persist-credentials: false
 
       - name: Set up Python
