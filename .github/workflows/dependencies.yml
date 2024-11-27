@@ -42,7 +42,7 @@ jobs:
         run: pre-commit autoupdate
 
       - name: Update test requirements
-        run: pip install --upgrade -r test_requirements.tx
+        run: pip install --upgrade -r test_requirements.txt
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v6.0.2
