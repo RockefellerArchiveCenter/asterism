@@ -1,5 +1,8 @@
 name: update dependencies
 on:
+  pull_request:
+    branches:
+      - development
 
   schedule:
     - cron:  '0 0 1 * *'
@@ -38,8 +41,8 @@ jobs:
       - name: Run pre-commit autoupdate
         run: pre-commit autoupdate
 
-      - name: Run pip-compile
-        run: pip-compile --upgrade
+      - name: Update test requirements
+        run: pip install --upgrade -r test_requirements.tx
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v6.0.2
