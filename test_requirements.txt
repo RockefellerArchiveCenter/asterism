@@ -4,7 +4,7 @@
 #
 #    pip-compile --output-file=test_requirements.txt test_requirements.in
 #
-coverage==7.6.8
+coverage==7.6.10
     # via -r test_requirements.in
 exceptiongroup==1.2.2
     # via pytest
