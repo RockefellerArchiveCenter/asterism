@@ -1,3 +1,5 @@
+ruleset test
+
 # asterism
 
 Helpers and common patterns used in Project Electron infrastructure. This package is named after a pattern or group of stars that is visually obvious, but not officially recognized as a constellation. Read more about asterisms on [Wikipedia](https://en.wikipedia.org/wiki/Asterism_(astronomy)).
