@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.1.2](https://github.com/RockefellerArchiveCenter/asterism/compare/asterism-v1.1.1...asterism-v1.1.2) (2026-07-06)
+
+
+### Bug Fixes
+
+* **deps:** Scheduled dependency updates ([07b393f](https://github.com/RockefellerArchiveCenter/asterism/commit/07b393f67b75f16669b134044f1aa2de6ced042a))
+* **deps:** Scheduled dependeny updates ([2f75b95](https://github.com/RockefellerArchiveCenter/asterism/commit/2f75b95122fbd6fd7a4da631616cb4b4582cb39e))
+* **deps:** Scheduled dependeny updates ([48fc042](https://github.com/RockefellerArchiveCenter/asterism/commit/48fc04209fe3f1b1c6532f3565b29d3c56fd3222))
+* **deps:** Scheduled dependeny updates ([48fc042](https://github.com/RockefellerArchiveCenter/asterism/commit/48fc04209fe3f1b1c6532f3565b29d3c56fd3222))
+* fix publish workflow ([5b440b1](https://github.com/RockefellerArchiveCenter/asterism/commit/5b440b192f94cf94c1ca5a4b7f5d6ee2e9cf5300))
+* fix publish workflow ([0c76b22](https://github.com/RockefellerArchiveCenter/asterism/commit/0c76b22d7c241d882a6b04e9ad1193636c506b56))
+* remove old python test ([5be247c](https://github.com/RockefellerArchiveCenter/asterism/commit/5be247cd442ac3d81a9e0f74e1d34e35ad277272))
+* update publish workflow ([ac2caea](https://github.com/RockefellerArchiveCenter/asterism/commit/ac2caead4cc52607c211a864283102f360d9a89a))
+* update publish workflw ([5b440b1](https://github.com/RockefellerArchiveCenter/asterism/commit/5b440b192f94cf94c1ca5a4b7f5d6ee2e9cf5300))
+
 ## [1.1.1](https://github.com/RockefellerArchiveCenter/asterism/compare/asterism-v1.1.0...asterism-v1.1.1) (2026-06-18)
 
 
