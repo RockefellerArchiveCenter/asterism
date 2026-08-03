@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.1.3](https://github.com/RockefellerArchiveCenter/asterism/compare/asterism-v1.1.2...asterism-v1.1.3) (2026-08-03)
+
+
+### Bug Fixes
+
+* **deps:** Scheduled dependency updates ([a62ac3c](https://github.com/RockefellerArchiveCenter/asterism/commit/a62ac3c1c08fa90228364b1216d3387652c0b865))
+* **deps:** Scheduled dependency updates ([9b7db9b](https://github.com/RockefellerArchiveCenter/asterism/commit/9b7db9b28791813161c5e49a02db15c9b07959d0))
+* **deps:** Scheduled dependency updates ([9b7db9b](https://github.com/RockefellerArchiveCenter/asterism/commit/9b7db9b28791813161c5e49a02db15c9b07959d0))
+* **deps:** Scheduled dependency updates ([07e5239](https://github.com/RockefellerArchiveCenter/asterism/commit/07e523962ed60ca1cded42a91e0d62637998e0c3))
+* **deps:** Scheduled dependency updates from Development ([a62ac3c](https://github.com/RockefellerArchiveCenter/asterism/commit/a62ac3c1c08fa90228364b1216d3387652c0b865))
+
 ## [1.1.2](https://github.com/RockefellerArchiveCenter/asterism/compare/asterism-v1.1.1...asterism-v1.1.2) (2026-07-06)
 
 

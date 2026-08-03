@@ -4,7 +4,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setup(name='asterism',
-      version='1.1.2',
+      version='1.1.3',
       description='Helpers for Project Electron infrastructure',
       long_description=long_description,
       long_description_content_type="text/markdown",
